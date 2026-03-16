@@ -88,7 +88,7 @@ class PageDataset(Dataset):
                 "input_ids": enc["input_ids"],  # transformer output
                 "attention_mask": enc["attention_mask"],
 
-                "bio_y": g["bio"].astype(int).tolist(),  # boundaries
+                "bio_y": g["bio"].astype(int).tolist() if "bio" in g.columns else [0] * len(g),  # boundaries
 
                 "tag_id": [tag_vocab[str(x)] for x in g["tag"]],
                 "parent_tag_id": [parent_tag_vocab[str(x)] for x in g["parent_tag"]],

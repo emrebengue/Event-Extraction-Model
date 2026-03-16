@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 def load_models(checkpoint_path, classifier_path, device):
-    ckpt = torch.load(checkpoint_path, map_location=device)
+    ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
     cfg = ckpt["cfg"]["model"]
 
     model = DOMAwareEventExtractor(
@@ -93,6 +93,7 @@ def predict_events(page_df, model, tokenizer, ckpt, field_bundle, device):
     )
     start_indices = [int(valid[i]) for i in start_indices]
 
+    # classifier prediction
     events = []
     for i, start in enumerate(start_indices):
         end = start_indices[i + 1] if i + 1 < len(start_indices) else len(page_df)
@@ -118,7 +119,7 @@ def predict_events(page_df, model, tokenizer, ckpt, field_bundle, device):
                 fields[label] = text
 
         events.append({
-            "event_index": i,
+            "event_number": i,
             "node_range": [start, end],
             "fields": fields,
         })
