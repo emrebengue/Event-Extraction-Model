@@ -14,6 +14,7 @@ The notebook has a much more detailed evalutation.
 import numpy as np
 import pandas as pd
 import torch
+from pathlib import Path
 
 from sklearn.model_selection import GroupShuffleSplit, KFold
 from transformers import AutoTokenizer
@@ -91,7 +92,11 @@ print(f"Test pages: {len(test_sources)}")
 
 
 # Tokenizer -------------------------------------------------------------
-tokenizer = AutoTokenizer.from_pretrained(cfg["model"]["name"])
+tokenizer_path = Path(__file__).parent / "tokenizer"
+if tokenizer_path.exists():
+    tokenizer = AutoTokenizer.from_pretrained(str(tokenizer_path))
+else:
+    tokenizer = AutoTokenizer.from_pretrained(cfg["name"])
 
 
 # Cross Validation -----------------------------------------------------

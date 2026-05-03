@@ -51,7 +51,11 @@ def load_models(checkpoint_path, classifier_path, device):
     model.load_state_dict(ckpt["model_state_dict"])
     model.eval()
 
-    tokenizer = AutoTokenizer.from_pretrained(cfg["name"])
+    tokenizer_path = Path(__file__).parent / "tokenizer"
+    if tokenizer_path.exists():
+        tokenizer = AutoTokenizer.from_pretrained(str(tokenizer_path))
+    else:
+        tokenizer = AutoTokenizer.from_pretrained(cfg["name"])
 
     # classifier
     field_bundle = joblib.load(classifier_path)
