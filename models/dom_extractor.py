@@ -11,7 +11,7 @@ Functions:
 - set_bert_trainable(): Freeze/unfreeze BERT parameters
 
 """
-
+from pathlib import Path
 import torch
 import torch.nn as nn
 from transformers import AutoModel
@@ -38,7 +38,11 @@ class DOMAwareEventExtractor(nn.Module):
         super().__init__()
 
         # text encoder part (DistilBERT)
-        self.text_encoder = AutoModel.from_pretrained(text_model_name)
+        tokenizer_path = Path(__file__).parent.parent / "tokenizer"
+        if tokenizer_path.exists():
+            self.text_encoder = AutoModel.from_pretrained(str(tokenizer_path))
+        else:
+            self.text_encoder = AutoModel.from_pretrained(text_model_name)
         text_dim = self.text_encoder.config.hidden_size
         self.text_proj = nn.Linear(text_dim, d_model)
         

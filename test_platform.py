@@ -5,9 +5,22 @@ from inference import load_models, load_data_and_prepare, run_dom_extractor, run
 import torch
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+"""Run this before using first time to cache model/tokenizer: 
+
+from transformers import AutoModel, AutoTokenizer
+
+model_name = "distilbert-base-uncased"
+save_path = "C:/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/tokenizer"
+
+# saves both tokenizer AND model weights to same folder
+AutoTokenizer.from_pretrained(model_name).save_pretrained(save_path)
+AutoModel.from_pretrained(model_name).save_pretrained(save_path)
+
+"""
+
 model, tokenizer, ckpt, field_bundle = load_models(
     checkpoint_path="/Users/yhila/Downloads/dom_extractor_checkpoint_v2.pt",
-    classifier_path="/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/field-classifier.ipynb",
+    classifier_path="/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/field_classifier_v1.joblib",
     device=device
 )
 
@@ -23,3 +36,5 @@ node_labels = run_field_classifier(df, results, field_bundle)
 events = predict_events(df, results, node_labels)
 
 save_output(events, "predicted_events.json")
+
+# 15 seconds for test
