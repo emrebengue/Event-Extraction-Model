@@ -1,3 +1,16 @@
+""" File Summary:
+Training the Boundary Model (Script Version). The train-dom-extractor.ipynb was used to train the model.
+
+Usage: Can be used as a standalone script (not tested)
+Follows the standard ML model training process, including cross-validation.
+After CV, the model uses the best found threshold (0.1238) and trains on all the data.
+Following that, the model evaluation is done (qulatitative and quantitative)
+
+Model is saved in a .pt file.
+
+The notebook has a much more detailed evalutation.
+"""
+
 import numpy as np
 import pandas as pd
 import torch

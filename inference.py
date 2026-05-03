@@ -1,3 +1,17 @@
+""" File Summary:
+Inference functions. Testing of these functions is in inference.ipynb.
+The key function of this script is predict_events(), which takes each model's output and correctly orderes events
+
+
+Functions:
+- load_models(): load saved (trained) classifier and boundary models
+- load_data_and_prepare(): load data and do a column check
+- run_dom_extractor(): run the dom extractor and return BIO tags + others
+- run_field_classifier(): run field classifier on non-O rwos
+- predict_events(): perform logic to group events
+- save_output(): save to json format
+"""
+
 import json
 import numpy as np
 import pandas as pd
@@ -280,15 +294,47 @@ def predict_events(page_df, dom_results, node_labels):
             event = {"source": source, "event_number": event_num}
             field_counts = {}
             
-            for valid_idx in range(start, end):
-                label = labels.get(valid_idx)
-                if label is None or label == "Other":
-                    continue
-                page_idx = int(valid[valid_idx])  # map to page-local index
-                field_counts[label] = field_counts.get(label, 0) + 1
-                key = f"{label}_{field_counts[label]}"
-                event[key] = str(page.iloc[page_idx]["text_context"])
+            # first pass — get label for every node in span
+            node_field_map = {}
+            for node_idx in range(start, end):
+                label = labels.get(node_idx)
+                if label and label != "Other":
+                    node_field_map[node_idx] = label
             
+            # second pass — assign keys including O nodes
+            prev_label = None
+            for node_idx in range(start, end):
+                page_idx = int(valid[node_idx])
+                text = str(page.iloc[page_idx]["text_context"])
+                
+                if node_idx in node_field_map:
+                    # labeled node
+                    label = node_field_map[node_idx]
+                    prev_label = label
+                    field_counts[label] = field_counts.get(label, 0) + 1
+                    key = f"{label}_{field_counts[label]}" if field_counts[label] > 1 else label
+                else:
+                    # O node — find next label
+                    next_label = None
+                    for j in range(node_idx + 1, end):
+                        if j in node_field_map:
+                            next_label = node_field_map[j]
+                            break
+                    
+                    if prev_label and next_label:
+                        combined = f"{prev_label}_{next_label}"
+                    elif prev_label:
+                        combined = prev_label
+                    elif next_label:
+                        combined = next_label
+                    else:
+                        continue
+                    
+                    field_counts[combined] = field_counts.get(combined, 0) + 1
+                    key = f"{combined}_{field_counts[combined]}"
+                
+                event[key] = text
+    
             all_events.append(event)
     
     return all_events

@@ -1,3 +1,15 @@
+""" File Summary:
+Concatenation of all the cleaned data
+
+Usage: Standalone Script
+Takes in all the files in the "cleaned" folder, and moves them into the "cleaned" folder.
+Adds a source column to the data
+
+Functions:
+get_headers(): extracts column names
+fuse(): concatenate the individual csv files and adds a source column
+"""
+
 import os
 import csv
 import pandas as pd

@@ -1,3 +1,19 @@
+""" File Summary:
+Includes merging lables, dataset creation (for BERT), and dataset manupulation.
+Merging is used in training, the rest are used in train_tils.py and inference.py
+
+Sections:
+    - Label merging:    Merge the labels that are related to each other before using the dataset. 
+                        New labels should be added here.
+                        merge_labels(): performs the label merge and returns the same df.
+                        
+    - Dataset Class:    Create the class that is used to make BERT loaders. 
+    
+    - Data Manipulation: Deals with padding node (row) items that are too short.
+                         Flattens text vector to be usable.
+    
+"""
+ 
 import numpy as np
 import torch
 from torch.utils.data import Dataset

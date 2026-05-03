@@ -1,3 +1,13 @@
+""" File Summary:
+Initial cleanup of the input data. Not a necessary step, but is a good sanity check.
+
+Usage: Standalone Script
+Takes in all the files in the "raw" folder, and moves them into the "cleaned" folder
+
+Functions:
+clean(): basic data cleaning
+"""
+
 import pandas as pd
 from pathlib import Path
 

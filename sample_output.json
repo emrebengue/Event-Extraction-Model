@@ -1,0 +1,118 @@
+[
+  {
+    "source": "neacac_spring.net_pattern_labeled",
+    "event_number": 1,
+    "Name": "bishop guertin high school",
+    "Date": "wednesday, march 25th",
+    "Time": "6pm",
+    "Time_2": "open to the public at 6:30pm",
+    "Time_3": "8pm",
+    "Location": "roedell field house",
+    "Location_2": "nashua, nh"
+  },
+  {
+    "source": "neacac_spring.net_pattern_labeled",
+    "event_number": 2,
+    "Name": "mitchell college",
+    "Date": "thursday, april 23rd",
+    "Time": "9am",
+    "Time_2": "11am",
+    "Location": "yarnall athletic center",
+    "Location_2": "new london, ct"
+  },
+  {
+    "source": "neacac_spring.net_pattern_labeled",
+    "event_number": 3,
+    "Name": "merrimack college",
+    "Date": "sunday, may 3rd",
+    "Time": "6pm",
+    "Time_2": "8pm",
+    "Location": "merrimack athletic complex: lawler rink",
+    "Location_2": "north andover, ma"
+  },
+  {
+    "source": "neacac_spring.net_pattern_labeled",
+    "event_number": 4,
+    "Name": "university of maine augusta",
+    "Date": "thursday, may 14th",
+    "Time": "9am",
+    "Time_2": "11am",
+    "Location": "augusta civic center",
+    "Location_2": "augusta, me"
+  },
+  {
+    "source": "neacac_spring.net_pattern_labeled",
+    "event_number": 5,
+    "Name": "assumption university",
+    "Date": "tuesday, may 19th",
+    "Time": "5:30pm",
+    "Time_2": "7:30pm",
+    "Location": "plourde recreation center",
+    "Location_2": "worcester, ma"
+  },
+  {
+    "source": "neacac_spring.net_pattern_labeled",
+    "event_number": 6,
+    "Name": "bridgewater state university",
+    "Date": "thursday, may 21st",
+    "Time": "9am",
+    "Time_2": "11am",
+    "Location": "tinsley center",
+    "Location_2": "bridgewater, ma"
+  },
+  {
+    "source": "neacac_spring.net_pattern_labeled",
+    "event_number": 7,
+    "Name": "franklin pierce university",
+    "Date": "friday, may 29th",
+    "Time": "9am",
+    "Time_2": "11am",
+    "Location": "grimshaw-gudiewicz northfields activity center \"the bubble\"",
+    "Location_2": "rindge, nh"
+  },
+  {
+    "source": "pnacac_spring.org_pattern_labeled",
+    "event_number": 1,
+    "Name": "boise fair",
+    "Date": "saturday, april 1",
+    "Date_Location_1": "8",
+    "Date_Location_2": ", 202",
+    "Date_Location_3": "6",
+    "Location": "boise state university, jordan ballroom",
+    "Location_Time_1": "1",
+    "Time": "11:00am-1:00pm"
+  },
+  {
+    "source": "pnacac_spring.org_pattern_labeled",
+    "event_number": 2,
+    "Name": "snohomish county fair",
+    "Date": "thursday, april 2",
+    "Date_Location_1": "3",
+    "Date_Location_2": ", 202",
+    "Date_Location_3": "6",
+    "Location": "meadowdale high school",
+    "Time": "6:00-8:00pm"
+  },
+  {
+    "source": "pnacac_spring.org_pattern_labeled",
+    "event_number": 3,
+    "Name": "seattle fair",
+    "Date": "saturday, april 2",
+    "Date_Location_1": "5,",
+    "Date_Location_2": "202",
+    "Date_Location_3": "6",
+    "Location": "seattle university",
+    "Time": "9:00am-12:00pm"
+  },
+  {
+    "source": "pnacac_spring.org_pattern_labeled",
+    "event_number": 4,
+    "Name": "portland fair",
+    "Date": "sunday, april 2",
+    "Date_Location_1": "6",
+    "Date_Location_2": ", 202",
+    "Date_Location_3": "6",
+    "Location": "university of portland",
+    "Time": "12:00-3:00pm"
+  }
+]

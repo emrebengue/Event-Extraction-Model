@@ -1,3 +1,11 @@
+""" File Summary:
+Loss function used in boundary model training loop.
+
+Functions:
+- bio_loss(): basic cross entropy loss.
+- weighted_bio_loss(): weighted loss more towards the B and I. Not used in training, but works in theory.
+
+"""
 import torch
 import torch.nn as nn
 from collections import Counter
