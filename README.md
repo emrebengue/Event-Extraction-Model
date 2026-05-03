@@ -36,7 +36,7 @@ Label distribution:
 
 ### 1. DOM Boundary Extractor
 
-The boundary extractor in [models/dom_extractor.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/models/dom_extractor.py) is the primary model in the pipeline.
+The boundary extractor in [models/dom_extractor.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/models/dom_extractor.py) is the primary model in the pipeline.
 
 - Text encoder: `distilbert-base-uncased`
 - Page encoder: Transformer encoder over DOM node sequence
@@ -48,11 +48,11 @@ The boundary extractor in [models/dom_extractor.py](/Users/yhila/OneDrive/Deskto
   - Numeric DOM features
   - Boolean DOM/text features
 
-Training and evaluation logic lives in [train_dom_extractor.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/train_dom_extractor.py).
+Training and evaluation logic lives in [train_dom_extractor.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/train_dom_extractor.py).
 
 ### 2. Field Classifier
 
-The field classifier in [models/field_classifier.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/models/field_classifier.py) runs on nodes predicted as part of an event.
+The field classifier in [models/field_classifier.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/train_dom_extractor.py) runs on nodes predicted as part of an event.
 
 - Model: `GradientBoostingClassifier`
 - Text features: TF-IDF with up to 300 features and 1-2 gram vocabulary
@@ -64,7 +64,7 @@ The field classifier in [models/field_classifier.py](/Users/yhila/OneDrive/Deskt
 
 ### 3. Event Assembly
 
-The inference pipeline in [inference.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/inference.py) performs the final assembly:
+The inference pipeline in [inference.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/inference.py) performs the final assembly:
 
 - Loads the DOM checkpoint and field-classifier bundle.
 - Validates and sorts input rows by `source` and `rendering_order`.
@@ -112,7 +112,7 @@ The first run of the boundary model downloads the Hugging Face tokenizer and mod
 
 ## Configuration
 
-All core settings are in [config.yaml](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/config.yaml).
+All core settings are in [config.yaml](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/config.yaml).
 
 ## Data Pipeline
 
@@ -124,12 +124,12 @@ The dataset is stored source-by-source, and the following cleaning is done (as a
 - Stripping whitespace from key string columns
 - Casting `link` to string dtype
 
-[helpers/concat.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/helpers/concat.py) concatenates all cleaned source files into a single training file and injects a `source` column from the filename stem.
+[helpers/concat.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/helpers/concat.py) concatenates all cleaned source files into a single training file and injects a `source` column from the filename stem.
 
 
 ## Label Merging
 
-The project merges label variants in [helpers/dataset.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/helpers/dataset.py) before model training. Any added labels should be inroduced here before retraining.
+The project merges label variants in [helpers/dataset.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/helpers/dataset.py) before model training. Any added labels should be inroduced here before retraining.
 
 Merged label mapping:
 
@@ -145,7 +145,7 @@ Merged label mapping:
 
 ## Input Details
 
-`load_data_and_prepare()` in [inference.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/inference.py) validates the inference input against the checkpoint and the current config.
+`load_data_and_prepare()` in [inference.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/inference.py) validates the inference input against the checkpoint and the current config.
 
 Required core columns:
 
@@ -201,7 +201,7 @@ Additional rules:
 
 ### Train The DOM Boundary Model
 
-Run: [rain_dom_extractor.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/inference.py) or the corresponding train-dom-extractor notebook
+Run: [train_dom_extractor.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/train_dom_extractor.py) or the corresponding train-dom-extractor notebook
 
 What it does:
 
@@ -253,8 +253,8 @@ The saved bundle includes:
 
 The repository currently contains:
 
-- [field_classifier_v1.joblib](/Users/christine/Documents/PythonProjects/Event-Extraction-Model/Event-Extraction-Model/field_classifier_v1.joblib), an exported field-classifier bundle
-- [predicted_events.json](/Users/christine/Documents/PythonProjects/Event-Extraction-Model/Event-Extraction-Model/predicted_events.json), a sample prediction export
+- [field_classifier_v1.joblib](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/field_classifier_v1.joblib), an exported field-classifier bundle
+- [sample_output.json](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/sample_output.json), a sample prediction export
 
 Fresh training using the script writes new artifacts into `models/`, while using the notebooks saves them outside with the existing ones.
 
@@ -262,7 +262,7 @@ For access to the dom_extractor_checkpoint.pt, see this [Google Drive link](http
 
 ## Inference
 
-Inference is exposed as reusable Python functions in [inference.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/inference.py). The committed code does not define a standalone CLI entry point, but an end-to-end example can be found in [test_platform.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/test_platform.py)
+Inference is exposed as reusable Python functions in [inference.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/inference.py). The committed code does not define a standalone CLI entry point, but an end-to-end example can be found in [test_platform.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/test_platform.py)
 
 ### Inference Output Contract
 
@@ -272,15 +272,13 @@ Inference is exposed as reusable Python functions in [inference.py](/Users/yhila
 - `event_number`
 - One or more extracted field entries named as `<Field>_<Index>`
 
-An example is found in [sample_output.json](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/sample_output.json)
-
 Repeated fields are separated by index. This preserves every extracted node instead of collapsing duplicate field labels into a single value.
 
 ## Evaluation
 
 ### Boundary Evaluation
 
-Boundary evaluation logic is implemented in [helpers/metrics.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/helpers/metrics.py).
+Boundary evaluation logic is implemented in [helpers/metrics.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/helpers/metrics.py).
 
 The boundary model is scored with:
 
@@ -308,7 +306,7 @@ The field classifier reports:
 
 ## Additional Baseline
 
-[models/classifier_model.py](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/models/classifier_model.py) contains a separate CatBoost-based binary event classifier experiment. It is not part of the main two-stage extraction pipeline.
+[models/classifier_model.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/models/classifier_model.py) contains a separate CatBoost-based binary event classifier experiment. It is not part of the main two-stage extraction pipeline.
 
 That script:
 
@@ -324,12 +322,12 @@ That script:
 
 The repository includes notebooks that mirror the scripted workflows and are easier to use for model exploration:
 
-- [data.ipynb](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/data.ipynb): for raw data visualization
-- [train-dom-extractor.ipynb](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/train-dom-extractor.ipynb): to train the boundary model
-- [field-classifier.ipynb](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/field-classifier.ipynb): to train the classifier model
-- [inference.ipynb](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/inference.ipynb): for running the inference testing
-- [test-playground.ipynb](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/test-playground.ipynb): where the bulk of the testing was done
-- [models/train.ipynb](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/models/train.ipynb): early standalone test area
+- [data.ipynb](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/data.ipynb): for raw data visualization
+- [train-dom-extractor.ipynb](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/train-dom-extractor.ipynb): to train the boundary model
+- [field-classifier.ipynb](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/field-classifier.ipynb): to train the classifier model
+- [inference.ipynb](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/inference.ipynb): for running the inference testing
+- [test-playground.ipynb](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/test-playground.ipynb): where the bulk of the testing was done
+- [models/train.ipynb](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/models/train.ipynb): early standalone test area
 
 ## Summary
 
