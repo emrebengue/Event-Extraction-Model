@@ -1,3 +1,8 @@
+"""
+Early classifier test using the CatBoostClassifier.
+Just a sanity check to see if we can tell if a row is or isn't part of an event
+"""
+
 import pandas as pd
 from pathlib import Path
 from catboost import CatBoostClassifier

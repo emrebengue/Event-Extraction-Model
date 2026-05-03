@@ -1,3 +1,14 @@
+""" File Summary:
+Training utilities: Function for data setup that used in initialization, and a function for 
+                    a single epoch run (run model -> loss fxn -> optimize).
+
+Functions:
+- make_loader(): Create a data loader (For BERT) using the dataset class and the torch DataLoader.
+
+- run_epoch(): A training loop of the DOM extractor Model
+                            
+"""
+
 import torch
 from functools import partial
 from torch.utils.data import DataLoader

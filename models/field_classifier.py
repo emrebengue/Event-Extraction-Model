@@ -1,3 +1,23 @@
+""" File Summary:
+Complete field classifier (Script Version). The field-classifier.ipynb was used to train the model.
+
+Usage: Standalone Script (not tested)
+The file uses Gradient Boost Classifier to get field labels. 
+Doesn't use the "Other" label for training or testing.
+
+Follows the standard model building process
+load data -> preprocess data -> train/test split -> train model -> evaluate
+
+Model is saved in a joblib file and is used in the inference.
+
+Functions:
+- build_features(): Data manipulation for the classifier input. 
+                    Includes vectorization of the text, one-hot encoding tags, etc
+
+- evaluate(): classifier metrics
+
+"""
+
 import joblib
 import numpy as np
 import pandas as pd

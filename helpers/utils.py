@@ -1,3 +1,14 @@
+""" File Summary:
+Some other functions that are essential and/or rarely used
+
+Functions:
+- load_config(): load the config file, which has all the variables. 
+                 Used mainly in training when trying to adjust/optimize model.
+
+- compute_num_stats(): mean and std calculations
+
+"""
+
 import yaml
 import numpy as np
 from pathlib import Path

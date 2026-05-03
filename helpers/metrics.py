@@ -1,3 +1,25 @@
+""" File Summary:
+Metrics and math functions. Mainly used in DOM extractor cross validation to find the threshold.
+Also used in other notebooks where metrics are checked.
+
+Functions:
+- collect_page_probs_and_truth(): run model and return list of (probs_full, prob_B, true_start), one per page.
+                                  Also used in inference.
+
+- pick_starts_from_probs(): Pick the leftmost local maximum in each region peak region 
+                            (with min_gap and nms_k constraints).
+                            
+- start_prf_with_tolerance(): Return (tp, fp, fn) counts for a single page (using tolerance).
+- compute_prf(): Calculate precision, reacll, and f1 (useing tolarance).
+
+- find_best_threshold_peak(): Get the best threshold during a cross validation fold
+
+- boundary_metrics_peak(): P,R,F1, of the peak (B)
+
+- decode_bio_sequence(): Test function not used in inference that returns list of (start, end) tuples.
+
+"""
+
 import numpy as np
 import torch
 from sklearn.metrics import f1_score

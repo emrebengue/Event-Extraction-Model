@@ -1,3 +1,17 @@
+""" File Summary:
+Core DOM model and initialization of the model. Only needs to be done once during training.
+The DOM class is used whenever the model is needed (training/inference)
+
+Functions:
+- class DOMAwareEventExtractor(): The model itself. incl
+
+- init_model_and_optim(): Initialize the dom model 
+                          make and return an instance of model/optimizar (using config values)
+
+- set_bert_trainable(): Freeze/unfreeze BERT parameters
+
+"""
+
 import torch
 import torch.nn as nn
 from transformers import AutoModel
