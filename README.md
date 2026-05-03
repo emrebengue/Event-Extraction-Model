@@ -2,6 +2,14 @@
 
 The Event Extraction Model converts webpage DOM node data into structured event records. The project combines a DOM-aware boundary detector with a field classifier to extract event-level attributes such as `Name`, `Date`, `Time`, `Location`, `Description`, and `Price` from page content that has already been transformed to CSV.
 
+Key Sections:
+- Architecture
+- Repo Layout
+- Installation
+- Label Merging
+- Training
+- Inference
+
 ## Overview
 
 The pipeline operates in two stages:
@@ -109,6 +117,8 @@ Event-Extraction-Model/
 The DOM boundary model uses PyTorch and runs on CUDA when available, otherwise on CPU. The code selects the device automatically.
 
 The first run of the boundary model downloads the Hugging Face tokenizer and model weights for `distilbert-base-uncased` unless they are already cached.
+
+To cache tokenizer and model, see details in [test_platform.py](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/test_platform.py)
 
 ## Configuration
 
