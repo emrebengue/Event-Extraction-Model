@@ -13,7 +13,7 @@ The final output is a JSON array of flat event records with repeat-safe keys suc
 
 ## Dataset Snapshot
 
-The repo already contains a compiled training dataset in [data/full_data.csv](C:/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/data/full_data.csv).
+The repo already contains a compiled training dataset in [data/full_data.csv](/Users/yhila/OneDrive/Desktop/UniFiles/Grad/IndustryProj/Event-Extraction-Model/data/full_data.csv).
 
 - Total DOM nodes: `3100`
 - Sources: `15`
