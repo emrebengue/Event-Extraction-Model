@@ -11,8 +11,8 @@ Key Sections:
 - Inference
 
 See the flowcharts for a visual understanding of the model:
-- [](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/TrainingFlowchart.png)
-- [](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/InferenceFlowchart.png)
+- [Training](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/TrainingFlowchart.png)
+- [Infernece](https://github.com/nasrAnthony/Event-Extraction-Model/blob/main/InferenceFlowchart.png)
 
 ## Overview
 
