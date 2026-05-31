@@ -272,10 +272,10 @@ def predict_events(page_df, dom_results, node_labels):
                 validated_starts.append(start)
             elif labels.get(start - 1) == reference_field:
                 validated_starts.append(start - 1)
-                bio_labels[first] = 2  # change old start from B to I
+                bio_labels[start] = 2  # change old start from B to I
             elif labels.get(start + 1) == reference_field:
                 validated_starts.append(start + 1)
-                bio_labels[first] = 2  # change old start from B to I
+                bio_labels[start] = 2  # change old start from B to I
             else:
                 print(f"Warning: discarding invalid start at node {start} for {source}")
 
